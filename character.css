@@ -100,3 +100,42 @@ Right Content Bar
   width: 80%;
   background: #FC9F5B;
 }
+
+/**************************
+Individual Cards
+**************************/
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 30%;
+  margin: 1.5%;
+  padding: 2%;
+  border-radius: 2em;
+  box-shadow: 3px 3px 3px black;
+}
+
+.cardName {
+  font-family: 'Muli', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  margin: 3%;
+}
+
+.cardDelete {
+  font-family: 'Muli', sans-serif;
+  border-top: 2px solid black;
+  text-align: center;
+  margin-top: 4%;
+  padding-top: 2%;
+  font-size: 1.2em;
+}
+
+.cardDelete:hover {
+  cursor: pointer;
+}
