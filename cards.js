@@ -57,10 +57,44 @@ buttonCreate.addEventListener("click", createNewCard);
 
 var userName = document.getElementById("userName");
 var userText = document.getElementById("userText");
-var colorTomato = document.getElementById("tomato");
-var colorBlue = document.getElementById("blue");
-var colorGreen = document.getElementById("green");
-var colorPink = document.getElementById("pink");
+
+var bgColorId  = [
+										{
+											id: document.getElementById("tomato"),
+											color: "tomato"
+										},
+										{
+											id: document.getElementById("blue"),
+											color: "blue"
+										},
+										{
+											id: document.getElementById("green"),
+											color: "green"
+										},
+										{
+											id: document.getElementById("pink"),
+											color: "pink"
+										}
+									];
+
+var fontColorId = [
+										{
+											id: document.getElementById("black"),
+											color: "black"
+										},
+										{
+											id: document.getElementById("white"),
+											color: "white"
+										},
+										{
+											id: document.getElementById("orange"),
+											color: "orange"
+										},
+										{
+											id: document.getElementById("yellow"),
+											color: "yellow"
+										}
+									];
 
 // Create a function that...
 	// a. introduces all objects in "charCards" into the DOM with formatting
@@ -79,18 +113,33 @@ function dealCards() {
 // Create a function [previewCard()] that...
 	// a. displays the card in the "preview" div
 
+// Create a function [colorLoop(obj)] that...
+	// a. loops through color radio IDs looking for .checked
+
+function colorLoop(arr) {
+	for (var i = 0; i < arr.length; i++) {
+		console.log("arr[i].id.checked: ", arr[i].id.checked);
+		if (arr[i].id.checked) {
+		console.log("arr[i].color: ", arr[i].color);
+		return arr[i].color;
+		}
+	}
+}
+
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
+ 	// i. runs colorLoop() to find correct color values
  // b. on submit, copies the newly created object into "charCards" at the beginning
  // c. runs print function and inputs inputs all objects into the DOM
  // d. resets all specifications in the card creation form
 
-function createNewCard() {
+function createNewCard(event) {
+	event.preventDefault();
 	newCard.name = userName.value;
 	newCard.text = userText.value;
-	newCard.bgcolor = bgcolor.value;
-	newCard.font = font.value;
-	charCards.push(newCard);
+	newCard.bgcolor = colorLoop(bgColorId);
+	newCard.font = colorLoop(fontColorId);
+	charCards.unshift(newCard);
 	dealCards();
 }
 
