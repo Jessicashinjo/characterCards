@@ -100,9 +100,10 @@ var fontColorId = [
 	// a. introduces all objects in "charCards" into the DOM with formatting
 
 function dealCards() {
+	var cardTable = document.getElementById("mainContent");
+	cardTable.innerHTML = "";
 	for (var i = 0; i < charCards.length; i++) {
 		var build = charCards[i];
-		var cardTable = document.getElementById("mainContent");
 		cardTable.innerHTML  += article + build.bgcolor + styleMid + build.font + styleEnd +
 														h3 + build.name + endH3 +
 														sectionText + build.text + endSectionText +
@@ -126,6 +127,22 @@ function colorLoop(arr) {
 	}
 }
 
+// Create a function that validates all specifications in the sidebar (i.e. makes sure all specs have been selected)
+
+function verifyText(obj) {
+	if (obj === "") {
+		alert("Please add text to both fields.");
+		return true;
+	}
+}
+
+function verifyColor(obj) {
+	if (obj === false) {
+		alert("Please select both a background and a font color.");
+		return true;
+	}
+}
+
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
  	// i. runs colorLoop() to find correct color values
@@ -135,10 +152,27 @@ function colorLoop(arr) {
 
 function createNewCard(event) {
 	event.preventDefault();
+
 	newCard.name = userName.value;
+	while (verifyText(newCard.name)) {
+		return;
+	}
+
 	newCard.text = userText.value;
+	while (verifyText(newCard.text)) {
+		return;
+	}
+
 	newCard.bgcolor = colorLoop(bgColorId);
+	while (verifyColor(newCard.bgcolor)) {
+		return;
+	}
+
 	newCard.font = colorLoop(fontColorId);
+	while (verifyColor(newCard.font)) {
+		return;
+	}
+
 	charCards.unshift(newCard);
 	dealCards();
 }
