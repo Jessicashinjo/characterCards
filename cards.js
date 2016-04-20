@@ -137,15 +137,25 @@ function verifyText(obj) {
 }
 
 function verifyColor(obj) {
-	if (obj === false) {
+	if (obj === undefined) {
 		alert("Please select both a background and a font color.");
 		return true;
 	}
 }
 
+// Make an object constructor function that builds new cards
+
+function Card(name, text, bgcolor, font) {
+	this.name = name;
+	this.text = text;
+	this.bgcolor = bgcolor;
+	this.font = font;
+}
+
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
- 	// i. runs colorLoop() to find correct color values
+ 	// i. verifies all input fields to find any empty or undefined values
+ 	// ii. runs colorLoop() to find correct color values
  // b. on submit, copies the newly created object into "charCards" at the beginning
  // c. runs print function and inputs inputs all objects into the DOM
  // d. resets all specifications in the card creation form
@@ -153,26 +163,23 @@ function verifyColor(obj) {
 function createNewCard(event) {
 	event.preventDefault();
 
-	newCard.name = userName.value;
-	while (verifyText(newCard.name)) {
+	while (verifyText(userName.value)) {
 		return;
 	}
 
-	newCard.text = userText.value;
-	while (verifyText(newCard.text)) {
+	while (verifyText(userText.value)) {
 		return;
 	}
 
-	newCard.bgcolor = colorLoop(bgColorId);
-	while (verifyColor(newCard.bgcolor)) {
+	while (verifyColor(colorLoop(bgColorId))) {
 		return;
 	}
 
-	newCard.font = colorLoop(fontColorId);
-	while (verifyColor(newCard.font)) {
+	while (verifyColor(colorLoop(fontColorId))) {
 		return;
 	}
 
+	newCard = new Card(userName.value, userText.value, colorLoop(bgColorId), colorLoop(fontColorId));
 	charCards.unshift(newCard);
 	dealCards();
 }
@@ -184,7 +191,9 @@ function createNewCard(event) {
 	// b. removes the clicked card from "charCards"
 	// c. removes the clicked card from the DOM
 
+// Call dealCards() so that it will run when the page loads
 
+dealCards();
 
 
 
