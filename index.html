@@ -5,49 +5,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Character Cards</title>
   <link rel="stylesheet" href="character.css">
+  <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <header id="header" class="">
-    <form>
-      <section class="basic text">
-        <label>Name</label>
-        <input type="text/submit/hidden/button/etc" name="" value="" id="userName">
-        <label>Character Description</label>
-        <textarea name="" id="userText"></textarea>
-      </section>
-      <legend>Background Color</legend>
-      <section class="basic bgColor">
-        <input type="radio" name="bgcolor" id="tomato">
-        <label for="tomato">Tomato</label>
-        <input type="radio" name="bgcolor" id="blue">
-        <label for="blue">Blue</label>
-        <input type="radio" name="bgcolor" id="green">
-        <label for="green">Green</label>
-        <input type="radio" name="bgcolor" id="pink">
-        <label for="pink">Pink</label>
-      </section>
-      <legend>Font Color</legend>
-      <section class="basic fontColor">
-        <input type="radio" name="fontcolor" id="black">
-        <label for="black">Black</label>
-        <input type="radio" name="fontcolor" id="white">
-        <label for="white">White</label>
-        <input type="radio" name="fontcolor" id="orange">
-        <label for="orange">Orange</label>
-        <input type="radio" name="fontcolor" id="yellow">
-        <label for="yellow">Yellow</label>
-      </section>
-      <section class="basic buttons">
-        <button id="cancel">Cancel</button>
-        <button id="create">Create</button>
-      </section>
-    </form>
-    <div id="preview">
+  <div class="wrapper">
+    <header id="header" class="">
+      <form id="leftMenu">
+        <section class="basic text">
+          <label class="textTitle textTitleName">Name:</label>
+          <input type="text/submit/hidden/button/etc" name="" value="" id="userName">
+          <label class="textTitle textTitleCharacter">Character Description:</label>
+          <textarea name="" id="userText"></textarea>
+        </section>
+        <legend>Background Color:</legend>
+        <section class="basic bgColor">
+          <label for="tomato"><input type="radio" name="bgcolor" id="tomato" class="radioButton bgcolor">Tomato</label>
+          <label for="blue"><input type="radio" name="bgcolor" id="blue" class="radioButton bgcolor">Blue</label>
+          <label for="green"><input type="radio" name="bgcolor" id="green" class="radioButton bgcolor">Green</label>
+          <label for="pink"><input type="radio" name="bgcolor" id="pink" class="radioButton bgcolor">Pink</label>
+        </section>
+        <legend>Font Color:</legend>
+        <section class="basic fontColor">
+          <label for="black"><input type="radio" name="fontcolor" id="black" class="radioButton">Black</label>
+          <label for="white"><input type="radio" name="fontcolor" id="white" class="radioButton">White</label>
+          <label for="orange"><input type="radio" name="fontcolor" id="orange" class="radioButton">Orange</label>
+          <label for="yellow"><input type="radio" name="fontcolor" id="yellow" class="radioButton">Yellow</label>
+        </section>
+        <section class="basic buttons">
+          <button id="cancel">Cancel</button>
+          <button id="create">Create</button>
+        </section>
+      </form>
+      <div id="preview">
+      </div>
+    </header>
+    <div class="mainContent" id="mainContent">
     </div>
-  </header>
-  <div class="mainContent" id="mainContent">
   </div>
-
   <script src="cards.js" type="text/javascript"></script>
 </body>
 </html>
