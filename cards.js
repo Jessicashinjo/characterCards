@@ -100,9 +100,10 @@ var fontColorId = [
 	// a. introduces all objects in "charCards" into the DOM with formatting
 
 function dealCards() {
+	var cardTable = document.getElementById("mainContent");
+	cardTable.innerHTML = "";
 	for (var i = 0; i < charCards.length; i++) {
 		var build = charCards[i];
-		var cardTable = document.getElementById("mainContent");
 		cardTable.innerHTML  += article + build.bgcolor + styleMid + build.font + styleEnd +
 														h3 + build.name + endH3 +
 														sectionText + build.text + endSectionText +
@@ -126,19 +127,59 @@ function colorLoop(arr) {
 	}
 }
 
+// Create a function that validates all specifications in the sidebar (i.e. makes sure all specs have been selected)
+
+function verifyText(obj) {
+	if (obj === "") {
+		alert("Please add text to both fields.");
+		return true;
+	}
+}
+
+function verifyColor(obj) {
+	if (obj === undefined) {
+		alert("Please select both a background and a font color.");
+		return true;
+	}
+}
+
+// Make an object constructor function that builds new cards
+
+function Card(name, text, bgcolor, font) {
+	this.name = name;
+	this.text = text;
+	this.bgcolor = bgcolor;
+	this.font = font;
+}
+
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
- 	// i. runs colorLoop() to find correct color values
+ 	// i. verifies all input fields to find any empty or undefined values
+ 	// ii. runs colorLoop() to find correct color values
  // b. on submit, copies the newly created object into "charCards" at the beginning
  // c. runs print function and inputs inputs all objects into the DOM
  // d. resets all specifications in the card creation form
 
 function createNewCard(event) {
 	event.preventDefault();
-	newCard.name = userName.value;
-	newCard.text = userText.value;
-	newCard.bgcolor = colorLoop(bgColorId);
-	newCard.font = colorLoop(fontColorId);
+
+	while (verifyText(userName.value)) {
+		return;
+	}
+
+	while (verifyText(userText.value)) {
+		return;
+	}
+
+	while (verifyColor(colorLoop(bgColorId))) {
+		return;
+	}
+
+	while (verifyColor(colorLoop(fontColorId))) {
+		return;
+	}
+
+	newCard = new Card(userName.value, userText.value, colorLoop(bgColorId), colorLoop(fontColorId));
 	charCards.unshift(newCard);
 	dealCards();
 }
@@ -150,7 +191,9 @@ function createNewCard(event) {
 	// b. removes the clicked card from "charCards"
 	// c. removes the clicked card from the DOM
 
+// Call dealCards() so that it will run when the page loads
 
+dealCards();
 
 
 
