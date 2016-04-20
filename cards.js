@@ -49,9 +49,13 @@ var endSectionText = 	"</section>";
 var divDelete = 			"<div class='cardDelete'>Delete Card</div>";
 
 // Define an event listener [click "Create" button] to submit form data
+// Define an event listener [click "Cancel" button] to clear form data
 
 var buttonCreate = document.getElementById("create");
 buttonCreate.addEventListener("click", createNewCard);
+
+var buttonCancel = document.getElementById("cancel");
+buttonCancel.addEventListener("click", cancelNew);
 
 // Place DOM elements for form fields in variables
 
@@ -184,7 +188,21 @@ function createNewCard(event) {
 	dealCards();
 }
 
-// Create a function [clearNew()] that resets all specifications in the sidebar when the "Clear" button is clicked
+// Create a function [cancelNew()] that resets all specifications in the sidebar when the "Clear" button is clicked
+
+function clearColors(arr) {
+	for (var i = 0; i < arr.length; i++) {
+		arr[i].id.checked = false;
+	}
+}
+
+function cancelNew(event) {
+	event.preventDefault();
+	userName.value = "";
+	userText.value = "";
+	clearColors(bgColorId);
+	clearColors(fontColorId);
+}
 
 // Create a function [deleteCard()] that...
 	// a. listens for a click on the card footer
