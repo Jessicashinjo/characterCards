@@ -35,7 +35,8 @@ var newCard = {};
 
 // Create variables that hold clusters of HTML code for formatting cards
 
-var article = 				"<article class='card' style='background:";
+var article = 				"<article class='card' id='art";
+var articleIdEnd = 		"' style='background:";
 var styleMid = 				"; color:";
 var styleEnd = 				"'>";
 var endArticle = 			"</article>";
@@ -46,7 +47,7 @@ var endH3 = 					"</h3>";
 var sectionText = 		"<section class='card-text'>";
 var endSectionText = 	"</section>";
 
-var divDelete = 			"<div id='cardDelete'>Delete Card</div>";
+var divDelete = 			"<div class='cardDelete'>Delete Card</div>";
 
 // Place DOM elements for form fields in variables
 
@@ -99,7 +100,7 @@ function dealCards() {
 	cardTable.innerHTML = "";
 	for (var i = 0; i < charCards.length; i++) {
 		var build = charCards[i];
-		cardTable.innerHTML  += article + build.bgcolor + styleMid + build.font + styleEnd +
+		cardTable.innerHTML  += article + i + articleIdEnd + build.bgcolor + styleMid + build.font + styleEnd +
 														h3 + build.name + endH3 +
 														sectionText + build.text + endSectionText +
 														divDelete + endArticle;
@@ -200,9 +201,15 @@ function cancelNew(event) {
 	// b. removes the clicked card from "charCards"
 	// c. removes the clicked card from the DOM
 
+var buttonDelete = document.getElementsByClassName("cardDelete");
+
 function cardDelete(event) {
-	event.preventDefault();
-	charCards.shift(this);
+	for (var i = 0; i < cardDelete.length; i++) {
+		console.log("event target: ", event.target);
+		if (event.target === buttonDelete[i]) {
+			mainContent.removeChild(buttonDelete[i].parentNode);
+		}
+	}
 }
 
 // Call dealCards() so that it will run when the page loads
@@ -219,9 +226,8 @@ buttonCreate.addEventListener("click", createNewCard);
 var buttonCancel = document.getElementById("cancel");
 buttonCancel.addEventListener("click", cancelNew);
 
-var buttonDelete = document.getElementById("cardDelete");
-buttonDelete.addEventListener("click", cardDelete);
-
+var mainContent = document.getElementById("mainContent");
+mainContent.addEventListener("click", cardDelete);
 
 
 

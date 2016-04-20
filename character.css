@@ -127,7 +127,7 @@ Individual Cards
   margin: 3%;
 }
 
-#cardDelete {
+.cardDelete {
   font-family: 'Muli', sans-serif;
   border-top: 2px solid black;
   text-align: center;
@@ -136,6 +136,6 @@ Individual Cards
   font-size: 1.2em;
 }
 
-#cardDelete:hover {
+.cardDelete:hover {
   cursor: pointer;
 }
