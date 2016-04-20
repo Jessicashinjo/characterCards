@@ -50,12 +50,16 @@ var divDelete = 			"<div class='cardDelete'>Delete Card</div>";
 
 // Define an event listener [click "Create" button] to submit form data
 // Define an event listener [click "Cancel" button] to clear form data
+// Define an event listener [click "Delete Card" on card footer] to delete a card
 
 var buttonCreate = document.getElementById("create");
 buttonCreate.addEventListener("click", createNewCard);
 
 var buttonCancel = document.getElementById("cancel");
 buttonCancel.addEventListener("click", cancelNew);
+
+var buttonDelete = document.getElementById("cardDelete");
+buttonCancel.addEventListener("click", deleteCard);
 
 // Place DOM elements for form fields in variables
 
@@ -208,6 +212,10 @@ function cancelNew(event) {
 	// a. listens for a click on the card footer
 	// b. removes the clicked card from "charCards"
 	// c. removes the clicked card from the DOM
+
+function deleteCard() {
+	charCards.shift(this);
+}
 
 // Call dealCards() so that it will run when the page loads
 
