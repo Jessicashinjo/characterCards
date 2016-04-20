@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/**************************
+Left Menu Bar
+**************************/
+
+#header {
+  max-width: 25%;
+  background: rgba(79, 204, 84, 0.6);
+  padding: 1%;
+}
+
+#leftMenu {
+  max-width: 90%;
+  margin: auto;
+}
+
+.basic {
+  padding: 1%;
+  margin-bottom: 10%;
+}
+
+.textTitleName {
+  font-size: 1.5em;
+  text-align: left;
+  font-family: 'Muli', sans-serif;
+}
+
+.textTitleCharacter {
+  display: block;
+  font-size: 1.5em;
+  text-align: left;
+  margin-top: 10%;
+  font-family: 'Muli', sans-serif;
+}
+
+#userName {
+  width: 64%;
+  height: 2.5em;
+  border-radius: 0.5em;
+  font-family: 'Muli', sans-serif;
+}
+
+#userText {
+  display: block;
+  width: 90%;
+  height: 10em;
+  border-radius: 0.5em;
+  font-family: 'Muli', sans-serif;
+}
+
+.bgColor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+legend {
+  font-size: 1.5em;
+  font-family: 'Muli', sans-serif;
+}
+
+label[for="tomato"] {
+ background: tomato;
+ border: 2px solid white;
+}
+
+label[for="blue"]{
+  background: blue;
+  border: 2px solid white;
+}
+
+label[for="green"] {
+  background: green;
+  border: 2px solid white;
+}
+
+label[for="pink"] {
+  background: pink;
+  border: 2px solid white;
+}
+
+/**************************
+Right Content Bar
+**************************/
+
+.mainContent {
+  width: 80%;
+  background: #FC9F5B;
+}
