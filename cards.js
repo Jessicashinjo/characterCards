@@ -29,9 +29,9 @@ var charCards = [
 	}
 ];
 
-// Define a placeholder array named "newCard".
+// Define a placeholder object named "newCard".
 
-var newCard = [];
+var newCard = {};
 
 // Create variables that hold clusters of HTML code for formatting cards
 
@@ -48,6 +48,20 @@ var endSectionText = 	"</section>";
 
 var divDelete = 			"<div class='cardDelete'>Delete Card</div>";
 
+// Define an event listener [click "Create" button] to submit form data
+
+var buttonCreate = document.getElementById("create");
+buttonCreate.addEventListener("click", createNewCard);
+
+// Place DOM elements for form fields in variables
+
+var userName = document.getElementById("userName");
+var userText = document.getElementById("userText");
+var colorTomato = document.getElementById("tomato");
+var colorBlue = document.getElementById("blue");
+var colorGreen = document.getElementById("green");
+var colorPink = document.getElementById("pink");
+
 // Create a function that...
 	// a. introduces all objects in "charCards" into the DOM with formatting
 
@@ -62,11 +76,25 @@ function dealCards() {
 	}
 }
 
+// Create a function [previewCard()] that...
+	// a. displays the card in the "preview" div
 
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
- // b. copies the newly created object into "charCards" at the beginning
+ // b. on submit, copies the newly created object into "charCards" at the beginning
  // c. runs print function and inputs inputs all objects into the DOM
+ // d. resets all specifications in the card creation form
+
+function createNewCard() {
+	newCard.name = userName.value;
+	newCard.text = userText.value;
+	newCard.bgcolor = bgcolor.value;
+	newCard.font = font.value;
+	charCards.push(newCard);
+	dealCards();
+}
+
+// Create a function [clearNew()] that resets all specifications in the sidebar when the "Clear" button is clicked
 
 // Create a function [deleteCard()] that...
 	// a. listens for a click on the card footer
