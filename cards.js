@@ -35,7 +35,8 @@ var newCard = {};
 
 // Create variables that hold clusters of HTML code for formatting cards
 
-var article = 				"<article class='card' style='background:";
+var article = 				"<article class='card' id='art";
+var articleIdEnd = 		"' style='background:";
 var styleMid = 				"; color:";
 var styleEnd = 				"'>";
 var endArticle = 			"</article>";
@@ -47,15 +48,6 @@ var sectionText = 		"<section class='card-text'>";
 var endSectionText = 	"</section>";
 
 var divDelete = 			"<div class='cardDelete'>Delete Card</div>";
-
-// Define an event listener [click "Create" button] to submit form data
-// Define an event listener [click "Cancel" button] to clear form data
-
-var buttonCreate = document.getElementById("create");
-buttonCreate.addEventListener("click", createNewCard);
-
-var buttonCancel = document.getElementById("cancel");
-buttonCancel.addEventListener("click", cancelNew);
 
 // Place DOM elements for form fields in variables
 
@@ -108,7 +100,7 @@ function dealCards() {
 	cardTable.innerHTML = "";
 	for (var i = 0; i < charCards.length; i++) {
 		var build = charCards[i];
-		cardTable.innerHTML  += article + build.bgcolor + styleMid + build.font + styleEnd +
+		cardTable.innerHTML  += article + i + articleIdEnd + build.bgcolor + styleMid + build.font + styleEnd +
 														h3 + build.name + endH3 +
 														sectionText + build.text + endSectionText +
 														divDelete + endArticle;
@@ -204,15 +196,38 @@ function cancelNew(event) {
 	clearColors(fontColorId);
 }
 
-// Create a function [deleteCard()] that...
+// Create a function [cardDelete()] that...
 	// a. listens for a click on the card footer
 	// b. removes the clicked card from "charCards"
 	// c. removes the clicked card from the DOM
+
+var buttonDelete = document.getElementsByClassName("cardDelete");
+
+function cardDelete(event) {
+	for (var i = 0; i < cardDelete.length; i++) {
+		console.log("event target: ", event.target);
+		if (event.target === buttonDelete[i]) {
+			mainContent.removeChild(buttonDelete[i].parentNode);
+		}
+	}
+}
 
 // Call dealCards() so that it will run when the page loads
 
 dealCards();
 
+// Define an event listener [click "Create" button] to submit form data
+// Define an event listener [click "Cancel" button] to clear form data
+// Define an event listener [click "Delete Card" on card footer] to delete a card
+
+var buttonCreate = document.getElementById("create");
+buttonCreate.addEventListener("click", createNewCard);
+
+var buttonCancel = document.getElementById("cancel");
+buttonCancel.addEventListener("click", cancelNew);
+
+var mainContent = document.getElementById("mainContent");
+mainContent.addEventListener("click", cardDelete);
 
 
 
