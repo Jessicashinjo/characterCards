@@ -21,23 +21,21 @@ var charCards = [
 
 var newCard = [];
 
-// Create an object that holds clusters of HTML code for formatting cards
+// Create variables that hold clusters of HTML code for formatting cards
 
-var cluster = {
-								article: 					"<article class='card' style='background:",
-								styleMid: 				"; color:",
-								styleEnd: 				"'>",
-								endArticle: 			"</article>",
+var article = 				"<article class='card' style='background:";
+var styleMid = 				"; color:";
+var styleEnd = 				"'>";
+var endArticle = 			"</article>";
 
-								h3: 							"<h3 class='cardName'>",
-								endH3: 						"</h3>",
+var h3 = 							"<h3 class='cardName'>";
+var endH3 = 					"</h3>";
 
-								sectionText: 			"<section class='card-text'>",
-								endSectionText: 	"</section>",
+var sectionText = 		"<section class='card-text'>";
+var endSectionText = 	"</section>";
 
-								divDelete: 				"<div class='cardDelete'>",
-								endDivDelete: 		"</div>"
-							}
+var divDelete = 			"<div class='cardDelete'>";
+var endDivDelete = 		"</div>";
 
 // Create a function [createNewCard()] that...
  // a. takes values from the form fields on the sidebar and dumps them in "newCard"
