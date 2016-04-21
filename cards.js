@@ -2,32 +2,7 @@
 // Create an array of objects named "charCards" and populate the array with a few premade objects.
 // Include key/value pairs for all card specifications that need to be stored.
 
-var charCards = [
-	{
-		name: "Heathcliff",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "tomato",
-		font: "black"
-	},
-	{
-		name: "Mario",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "blue",
-		font: "white"
-	},
-	{
-		name: "Snoopy",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "green",
-		font: "orange"
-	},
-	{
-		name: "Arnold",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "pink",
-		font: "yellow"
-	}
-];
+var charCards = [];
 
 // Define a placeholder object named "newCard".
 
@@ -217,10 +192,6 @@ function cardDelete(event) {
 		}
 	}
 }
-
-// Call dealCards() so that it will run when the page loads
-
-dealCards();
 
 // Define an event listener [click "Create" button] to submit form data
 // Define an event listener [click "Cancel" button] to clear form data
