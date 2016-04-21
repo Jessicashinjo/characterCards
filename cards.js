@@ -2,32 +2,7 @@
 // Create an array of objects named "charCards" and populate the array with a few premade objects.
 // Include key/value pairs for all card specifications that need to be stored.
 
-var charCards = [
-	{
-		name: "Heathcliff",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "tomato",
-		font: "black"
-	},
-	{
-		name: "Mario",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "blue",
-		font: "white"
-	},
-	{
-		name: "Snoopy",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "green",
-		font: "orange"
-	},
-	{
-		name: "Arnold",
-		text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum eros mauris, a rhoncus libero dictum id. Sed hendrerit fermentum consectetur. Nam ullamcorper non urna elementum tristique. Donec cursus faucibus congue. Nulla consequat, lacus vel lacinia tristique, erat sem venenatis nunc, quis sagittis magna lorem vitae quam. Sed sit amet augue id nibh dictum ultricies. Nulla cursus at purus quis faucibus.",
-		bgcolor: "pink",
-		font: "yellow"
-	}
-];
+var charCards = [];
 
 // Define a placeholder object named "newCard".
 
@@ -178,6 +153,7 @@ function createNewCard(event) {
 	newCard = new Card(userName.value, userText.value, colorLoop(bgColorId), colorLoop(fontColorId));
 	charCards.unshift(newCard);
 	dealCards();
+	cancelNew(event);
 }
 
 // Create a function [cancelNew()] that resets all specifications in the sidebar when the "Clear" button is clicked
@@ -196,25 +172,26 @@ function cancelNew(event) {
 	clearColors(fontColorId);
 }
 
+// Create a variable called "buttonDelete" that is set to an empty array
 // Create a function [cardDelete()] that...
-	// a. listens for a click on the card footer
-	// b. removes the clicked card from "charCards"
-	// c. removes the clicked card from the DOM
+	// a. runs on the click event on mainContent
+	// b.	defines "buttonDelete" as an array of delete div DOM elements
+	// c. removes the clicked card from "charCards"
+	// d. removes the clicked card from the DOM
 
-var buttonDelete = document.getElementsByClassName("cardDelete");
+var buttonDelete = [];
 
 function cardDelete(event) {
-	for (var i = 0; i < cardDelete.length; i++) {
-		console.log("event target: ", event.target);
+	buttonDelete = document.getElementsByClassName("cardDelete");
+	console.log("length", buttonDelete.length);
+	for (var i = 0; i < buttonDelete.length; i++) {
 		if (event.target === buttonDelete[i]) {
 			mainContent.removeChild(buttonDelete[i].parentNode);
+			charCards.splice(i, 1);
+			console.log("charCards: ", charCards);
 		}
 	}
 }
-
-// Call dealCards() so that it will run when the page loads
-
-dealCards();
 
 // Define an event listener [click "Create" button] to submit form data
 // Define an event listener [click "Cancel" button] to clear form data
