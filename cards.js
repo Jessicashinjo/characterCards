@@ -178,6 +178,7 @@ function createNewCard(event) {
 	newCard = new Card(userName.value, userText.value, colorLoop(bgColorId), colorLoop(fontColorId));
 	charCards.unshift(newCard);
 	dealCards();
+	cancelNew(event);
 }
 
 // Create a function [cancelNew()] that resets all specifications in the sidebar when the "Clear" button is clicked
@@ -196,18 +197,23 @@ function cancelNew(event) {
 	clearColors(fontColorId);
 }
 
+// Create a variable called "buttonDelete" that is set to an empty array
 // Create a function [cardDelete()] that...
-	// a. listens for a click on the card footer
-	// b. removes the clicked card from "charCards"
-	// c. removes the clicked card from the DOM
+	// a. runs on the click event on mainContent
+	// b.	defines "buttonDelete" as an array of delete div DOM elements
+	// c. removes the clicked card from "charCards"
+	// d. removes the clicked card from the DOM
 
-var buttonDelete = document.getElementsByClassName("cardDelete");
+var buttonDelete = [];
 
 function cardDelete(event) {
-	for (var i = 0; i < cardDelete.length; i++) {
-		console.log("event target: ", event.target);
+	buttonDelete = document.getElementsByClassName("cardDelete");
+	console.log("length", buttonDelete.length);
+	for (var i = 0; i < buttonDelete.length; i++) {
 		if (event.target === buttonDelete[i]) {
 			mainContent.removeChild(buttonDelete[i].parentNode);
+			charCards.splice(i, 1);
+			console.log("charCards: ", charCards);
 		}
 	}
 }
